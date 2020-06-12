@@ -6,7 +6,7 @@ starters.  See: <https://tools.ietf.org/id/draft-knodel-terminology-01.html>
 
 ## Installation
 
-Not sure yet.
+`gem install puppet-lint-racism_terminology-check` 
 
 ### Author
 
