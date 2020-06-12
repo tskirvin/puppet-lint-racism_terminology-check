@@ -1,6 +1,7 @@
 /.bundle/
 /vendor/gems/
 /Gemfile.lock
+coverage/
 pkg/
 .ruby-*
 puppet-lint-*.gem

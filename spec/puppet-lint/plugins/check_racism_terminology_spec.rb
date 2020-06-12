@@ -1,67 +1,47 @@
 require 'spec_helper'
 
-describe 'racist_terminology' do
-  context 'boring' do
-    let(:code) do
-      <<-FILE_BLOCK
-        file { '/tmp/boring': }
-      FILE_BLOCK
-    end
+describe 'racism_terminology' do
+  context 'clean' do
+    let(:code) { "file { '/tmp/boring': }" }
 
     it 'should detect no problems' do
       is_expected.to have(0).problems
     end
   end
 
-  context 'master filename' do
-    let(:code) do
-      <<-FILE_BLOCK
-        file { '/tmp/master': }
-      FILE_BLOCK
-    end
+  context 'master' do
+    let(:code) { "file { '/tmp/master': }" }
+    let(:msg) { 'master/slave terminology, perhaps leader/follower?' }
 
-    it 'should detect a problems' do
-      expect(problems).to have(1).problems
+    it 'should create a warning' do
+      expect(problems).to contain_warning(msg).on_line(1)
     end
   end
 
-  context 'slave filename' do
-    let(:code) do
-      <<-FILE_BLOCK
-        file { '/tmp/slave': }
-      FILE_BLOCK
-    end
+  context 'slave' do
+    let(:code) { "file { '/tmp/slave': }" }
+    let(:msg) { 'master/slave terminology, perhaps leader/follower?' }
 
-    it 'should detect a problems' do
-      expect(problems).to have(1).problems
+    it 'should create a warning' do
+      expect(problems).to contain_warning(msg).on_line(1)
     end
   end
 
-  context 'blacklist filename' do
-    let(:code) do
-      <<-FILE_BLOCK
-        class file_resource {
-          file { '/tmp/blacklist': mode => '0600' }
-        }
-      FILE_BLOCK
-    end
+  context 'whitelist' do
+    let(:code) { "file { '/tmp/whitelist': }" }
+    let(:msg) { 'blacklist/whitelist terminology, perhaps blocklist/approvelist?' }
 
-    it 'should detect a problems' do
-      expect(problems).to have(1).problems
+    it 'should create a warning' do
+      expect(problems).to contain_warning(msg).on_line(1)
     end
   end
 
-  context 'whitelist filename' do
-    let(:code) do
-      <<-FILE_BLOCK
-        class file_resource {
-          file { '/tmp/whitelist': mode => '0600' }
-        }
-      FILE_BLOCK
-    end
+  context 'blacklist' do
+    let(:code) { "file { '/tmp/blacklist': }" }
+    let(:msg) { 'blacklist/whitelist terminology, perhaps blocklist/approvelist?' }
 
-    it 'should detect a problems' do
-      expect(problems).to have(1).problems
+    it 'should create a warning' do
+      expect(problems).to contain_warning(msg).on_line(1)
     end
   end
 end
