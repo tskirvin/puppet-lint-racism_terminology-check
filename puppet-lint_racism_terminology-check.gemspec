@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name        = 'puppet-lint-racism_terminology-check'
-  spec.version     = '1.0.1'
+  spec.version     = '1.0.2'
   spec.homepage    = 'https://github.com/tskirvin/puppet-lint-racism_terminology-check'
   spec.license     = 'MIT'
   spec.author      = 'Tim Skirvin'
@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   DESC
 
   spec.add_dependency 'puppet-lint', '>= 1.1', '< 5.0'
+  spec.add_dependency 'uri', '~> 0.10.0'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rspec-collection_matchers', '~> 1.0'

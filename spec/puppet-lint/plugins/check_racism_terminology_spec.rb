@@ -53,4 +53,13 @@ describe 'racism_terminology' do
       expect(problems).to contain_warning(msg).on_line(1)
     end
   end
+
+  context 'master in a URL' do
+      let(:code) { '# Some URL example.com/master/' }
+      let(:msg) { 'url testing' }
+
+      it 'should not create a warning' do
+        expect(problems).not_to contain_warning
+      end
+    end
 end
