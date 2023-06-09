@@ -18,6 +18,15 @@ describe 'racism_terminology' do
     end
   end
 
+  context 'master in a URL' do
+    let(:code) { "file { '/foo/bar': source => 'http://example.com/master' }" }
+    let(:msg) { 'master/slave terminology, perhaps leader/follower?' }
+
+    it 'should not create a warning' do
+      expect(problems).not_to contain_warning(msg).on_line(1)
+    end
+  end
+
   context 'slave' do
     let(:code) { "file { '/tmp/slave': }" }
     let(:msg) { 'master/slave terminology, perhaps leader/follower?' }
