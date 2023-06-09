@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
     in your code.  Starting terms: whitelist, blacklist, master, slave
   DESC
 
-  spec.add_dependency 'puppet-lint', '>= 1.1', '< 3.0'
+  spec.add_dependency 'puppet-lint', '>= 1.1', '< 5.0'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rspec-collection_matchers', '~> 1.0'
