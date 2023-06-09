@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec-json_expectations', '~> 2.2'
   spec.add_development_dependency 'rubocop', '~> 0.85.0'
   spec.add_development_dependency 'simplecov', '~> 0.18.0'
+  spec.add_development_dependency 'uri'
 end
