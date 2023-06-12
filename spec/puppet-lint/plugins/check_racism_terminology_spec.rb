@@ -27,6 +27,24 @@ describe 'racism_terminology' do
     end
   end
 
+  context 'slave in code as param' do
+    let(:code) { "redis::instance { $redis_server_name:\n  cluster_slave_validity_factor => 1,\n}" }
+    let(:msg) { 'master/slave terminology, perhaps leader/follower?' }
+
+    it 'should create a warning' do
+      expect(problems).to contain_warning(msg)
+    end
+  end
+
+  context 'slave in code' do
+    let(:code) { "include slave" }
+    let(:msg) { 'master/slave terminology, perhaps leader/follower?' }
+
+    it 'should create a warning' do
+      expect(problems).to contain_warning(msg).on_line(1)
+    end
+  end
+
   context 'slave' do
     let(:code) { "file { '/tmp/slave': }" }
     let(:msg) { 'master/slave terminology, perhaps leader/follower?' }
