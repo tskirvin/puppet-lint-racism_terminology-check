@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Gem::Specification.new do |spec|
   spec.name        = 'puppet-lint-racism_terminology-check'
   spec.version     = '1.0.2'
