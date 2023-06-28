@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 PuppetLint.new_check(:racism_terminology) do
   # rubocop:disable Style/Next
   def check
     manifest_lines.each_with_index do |line, idx|
-      if line =~ /\b(master|slave)\b/ && line !~ URI::DEFAULT_PARSER.make_regexp
+      if line =~ /(\b|-|_)(master|slave)(\b|-|_)/ && line !~ %r{http(s)?://}
         notify(
           :warning,
           message: 'master/slave terminology, perhaps leader/follower?',
@@ -11,7 +13,7 @@ PuppetLint.new_check(:racism_terminology) do
         )
       end
 
-      if line =~ /\b(blacklist|whitelist)\b/ && line !~ URI::DEFAULT_PARSER.make_regexp
+      if line =~ /(\b|-|_)(blacklist|whitelist)(\b|-|_)/ && line !~ %r{http(s)?://}
         notify(
           :warning,
           message: 'blacklist/whitelist terminology, perhaps blocklist/approvelist?',
