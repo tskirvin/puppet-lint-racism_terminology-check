@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name        = 'puppet-lint-racism_terminology-check'
-  spec.version     = '1.0.2'
+  spec.version     = '1.0.3'
   spec.homepage    = 'https://github.com/tskirvin/puppet-lint-racism_terminology-check'
   spec.license     = 'MIT'
   spec.author      = 'Tim Skirvin'
